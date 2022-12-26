@@ -1,0 +1,11 @@
+.container {
+    background-color: rgb(220, 215, 215);
+    display: flex;
+}
+
+.list-table {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
