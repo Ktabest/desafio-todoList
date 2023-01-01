@@ -4,25 +4,29 @@ let agregarTarea = document.querySelector('#agregar-tarea')
 const realizadas1 = 0
 
 
+
 const listadoTareas = () => {
     const lista = document.querySelector('#listaTareas tbody')
-    const realizadas1 = 0
-    lista.innerHTML = ''
-    for (const tarea of registroTareas) {
-        if (nuevaTarea.status) {
-            realizadas1 = realizadas1 + 1;
+    let realizadas1 = 0
+     lista.innerHTML = ''
+    for (let tarea of registroTareas) {
+        if (tarea.status) {
+            realizadas1++;
         }
         lista.innerHTML += `
         <tr>
         <td>${tarea.id}</td>
         <td>${tarea.nombre}</td>
-        <td><input type= "checkbox" onclick ="realizadas(" ><button onclick ="borrarTarea()">X</button></td>
+        <td><input type= "checkbox" id= "checkboxes" onclick = "tareasRealizadas()"  ><button onclick ="borrarTarea()">X</button></td>
         </tr>
         `
-        const total = document.querySelector('#total-tareas')
+       nuevaTarea = ''
+   
+        const total = document.querySelector('#total-tareas');
         total.innerHTML = registroTareas.length
         const totalRealizadas = document.querySelector('#tareas-realizadas')
         totalRealizadas.innerHTML = realizadas1
+
     }
 }
 
@@ -45,12 +49,13 @@ const borrarTarea = (nombre) => {
 }
 listadoTareas();
 
-const realizadas = (ticket) => {
-    let marcar = nuevoArreglo.findIndex((tarea) => tarea.ticket === ticket)
-    if (registroTareas[marcar].status === false) {
-        registroTareas[marcar].status = true;
+const tareasRealizadas = (estado) => {
+    let checked = registroTareas.findIndex((tarea) => tarea.estado === estado)
+    if (registroTareas[checked].status === false) {
+        registroTareas[checked].status = true;
     }
     else {
-        registroTareas[marcar].status = false
+        registroTareas[checked].status = false
     }
 }
+

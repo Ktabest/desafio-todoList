@@ -1,11 +1,20 @@
-.container {
-    background-color: rgb(220, 215, 215);
-    display: flex;
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
 
-.list-table {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+
+.container {
+    background-color: rgb(220, 215, 215);
+
+    width: 50%;
+}
+
+
+#agregar-tarea {
+    background-color: rgb(88, 187, 187);
+    color: rgb(107, 94, 79);
+    height: 20px;
+
 }
 
