@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
     <div class="container">
+        <h1>Todo List</h1>
         <div class="todoList">
-    <h1>Todo List</h1>
-    <p>Nueva tarea</p>
-    <input id="nueva-tarea" type="text">
-    <button id="agregar-tarea">Agregar</button>
-    <p>Total:<span id="total-tareas"></span></p>
-    <p>Realizadas:<span id="tareas-realizadas"></span></p>
-    </div>
-    <div class="list-table">
-    <table id="listaTareas">
-        <thead>
-            <tr>
-            <th>ID</th>
-            <th>Tarea</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-    </div>
+            <p><strong>Nueva tarea</strong></p>
+            <input id="nueva-tarea" type="text">
+            <button id="agregar-tarea">Agregar</button>
+        </div>
+        <div class="totales">
+            <p><strong>Total:</strong><span id="total-tareas"></span></p>
+            <p> <strong>Realizadas:</strong><span id="tareas-realizadas"></span></p>
+        </div>
+        <div class="list-table">
+            <table id="listaTareas">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tarea</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
 
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
