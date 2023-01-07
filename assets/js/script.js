@@ -1,61 +1,56 @@
-let registroTareas = []
-let nuevaTarea = document.querySelector('#nueva-tarea').value
-let agregarTarea = document.querySelector('#agregar-tarea')
-const realizadas1 = 0
-
-
+let registroTareas = [];
+let nuevaTarea = document.querySelector('#nueva-tarea').value;
+const total = document.querySelector('#total-tareas');
+const totalRealizadas = document.querySelector('#tareas-realizadas');
+let btnAgregarTarea = document.querySelector('#agregar-tarea');
 
 const listadoTareas = () => {
-    const lista = document.querySelector('#listaTareas tbody')
-    let realizadas1 = 0
-     lista.innerHTML = ''
+    const lista = document.querySelector('#listaTareas tbody');
+    let realizadas = 0;
+    html = '';
     for (let tarea of registroTareas) {
         if (tarea.status) {
-            realizadas1++;
+            realizadas++;
         }
-        lista.innerHTML += `
+        html += `
         <tr>
         <td>${tarea.id}</td>
         <td>${tarea.nombre}</td>
-        <td><input type= "checkbox" id= "checkboxes" onclick = "tareasRealizadas()"  ><button onclick ="borrarTarea()">X</button></td>
+        <td><input type= "checkbox" onclick = "tareasRealizadas(${tarea.status})"><button onclick ="borrarTarea(${tarea.id})">X</button></td>
         </tr>
-        `
-       nuevaTarea = ''
+       `
+       nuevaTarea = '';
+    }
    
-        const total = document.querySelector('#total-tareas');
-        total.innerHTML = registroTareas.length
-        const totalRealizadas = document.querySelector('#tareas-realizadas')
-        totalRealizadas.innerHTML = realizadas1
-
-    }
+    lista.innerHTML = html;
+    total.innerHTML = registroTareas.length;
+    totalRealizadas.innerHTML = realizadas;
 }
 
-agregarTarea.addEventListener("click", function () {
-    let nuevaTarea = document.querySelector('#nueva-tarea').value
-    if (nuevaTarea === '') {
-       return alert("agregar tarea");
-    }
-    registroTareas.push({ id: Date.now(), nombre: nuevaTarea, status: false });
-
-    nuevaTarea = ''
-
-    listadoTareas();
-})
-
-const borrarTarea = (nombre) => {
-    let borrar = registroTareas.findIndex((item) => item.nombre === nombre)
-    registroTareas.splice(borrar, 1);
-    listadoTareas();
-}
-listadoTareas();
-
-const tareasRealizadas = (estado) => {
-    let checked = registroTareas.findIndex((tarea) => tarea.estado === estado)
+const tareasRealizadas = (status) => {
+    let checked = registroTareas.findIndex((tarea) => tarea.status === status)
     if (registroTareas[checked].status === false) {
         registroTareas[checked].status = true;
     }
     else {
-        registroTareas[checked].status = false
+        registroTareas[checked].status = false;
     }
+    listadoTareas();
 }
+
+const borrarTarea = (tareaId) => {
+    let borrar = registroTareas.findIndex((item) => item.tareaId === tareaId)
+    registroTareas.splice(borrar, 1);
+    listadoTareas();
+}
+
+btnAgregarTarea.addEventListener("click", () => {
+    let nuevaTarea = document.querySelector('#nueva-tarea').value
+    if (nuevaTarea === '') {
+        return alert("agregar tarea");
+    }
+    registroTareas.push({ id: Date.now(), nombre: nuevaTarea, status: false });
+
+    listadoTareas();
+});
 
